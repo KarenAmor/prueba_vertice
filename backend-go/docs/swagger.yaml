@@ -1,0 +1,243 @@
+definitions:
+  models.AuthResponse:
+    properties:
+      access_token:
+        type: string
+      user:
+        $ref: '#/definitions/models.User'
+    type: object
+  models.CreateProjectRequest:
+    properties:
+      description:
+        type: string
+      name:
+        type: string
+    required:
+    - name
+    type: object
+  models.LoginRequest:
+    properties:
+      email:
+        type: string
+      password:
+        type: string
+    required:
+    - email
+    - password
+    type: object
+  models.Project:
+    properties:
+      created_at:
+        type: string
+      description:
+        type: string
+      id:
+        type: string
+      name:
+        type: string
+      user_id:
+        type: string
+    type: object
+  models.RegisterRequest:
+    properties:
+      email:
+        type: string
+      password:
+        minLength: 6
+        type: string
+    required:
+    - email
+    - password
+    type: object
+  models.User:
+    properties:
+      created_at:
+        type: string
+      email:
+        type: string
+      id:
+        type: string
+    type: object
+info:
+  contact: {}
+  description: API REST para gestión de proyectos y tareas con autenticación JWT desarrollada
+    en Go
+  title: Gestión de Proyectos y Tareas API (Go)
+  version: "1.0"
+paths:
+  /auth/login:
+    post:
+      consumes:
+      - application/json
+      description: Autentica un usuario y devuelve un token JWT
+      parameters:
+      - description: Credenciales del usuario
+        in: body
+        name: credentials
+        required: true
+        schema:
+          $ref: '#/definitions/models.LoginRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Login exitoso
+          schema:
+            $ref: '#/definitions/models.AuthResponse'
+        "400":
+          description: Datos de entrada inválidos
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+        "401":
+          description: Credenciales inválidas
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: Iniciar sesión
+      tags:
+      - auth
+  /auth/register:
+    post:
+      consumes:
+      - application/json
+      description: Crea una nueva cuenta de usuario en el sistema
+      parameters:
+      - description: Datos del usuario
+        in: body
+        name: user
+        required: true
+        schema:
+          $ref: '#/definitions/models.RegisterRequest'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Usuario registrado exitosamente
+          schema:
+            $ref: '#/definitions/models.AuthResponse'
+        "400":
+          description: Datos de entrada inválidos
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+        "409":
+          description: El usuario ya existe
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: Registrar nuevo usuario
+      tags:
+      - auth
+  /projects:
+    get:
+      consumes:
+      - application/json
+      description: Obtiene todos los proyectos del usuario autenticado
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Lista de proyectos obtenida exitosamente
+          schema:
+            items:
+              $ref: '#/definitions/models.Project'
+            type: array
+        "401":
+          description: Token JWT requerido
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+        "500":
+          description: Error interno del servidor
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      security:
+      - BearerAuth: []
+      summary: Listar proyectos del usuario
+      tags:
+      - projects
+    post:
+      consumes:
+      - application/json
+      description: Crea un nuevo proyecto para el usuario autenticado
+      parameters:
+      - description: Datos del proyecto
+        in: body
+        name: project
+        required: true
+        schema:
+          $ref: '#/definitions/models.CreateProjectRequest'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Proyecto creado exitosamente
+          schema:
+            $ref: '#/definitions/models.Project'
+        "400":
+          description: Datos de entrada inválidos
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+        "401":
+          description: Token JWT requerido
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      security:
+      - BearerAuth: []
+      summary: Crear nuevo proyecto
+      tags:
+      - projects
+  /projects/{id}:
+    get:
+      consumes:
+      - application/json
+      description: Obtiene un proyecto específico del usuario autenticado
+      parameters:
+      - description: ID del proyecto
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Proyecto obtenido exitosamente
+          schema:
+            $ref: '#/definitions/models.Project'
+        "401":
+          description: Token JWT requerido
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+        "404":
+          description: Proyecto no encontrado
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      security:
+      - BearerAuth: []
+      summary: Obtener proyecto por ID
+      tags:
+      - projects
+securityDefinitions:
+  BearerAuth:
+    description: Ingresa tu token JWT con el prefijo 'Bearer '
+    in: header
+    name: Authorization
+    type: apiKey
+swagger: "2.0"
