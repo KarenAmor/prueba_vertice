@@ -278,4 +278,3 @@ Para problemas o preguntas, revisar:
 2. La configuración de Supabase
 3. Las variables de entorno
 4. La documentación de Gin
-
