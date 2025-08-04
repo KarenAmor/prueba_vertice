@@ -308,7 +308,6 @@ go run main.go
 - `backend-node/README.md` - Documentación del backend Node.js
 - `frontend/README.md` - Documentación del frontend React
 - `backend-go/README.md` - Documentación del backend Go
-- `INSTRUCCIONES_*.md` - Guías de instalación específicas
 
 ## 👨‍💻 Desarrollado por Karen Edith Moreno
 
