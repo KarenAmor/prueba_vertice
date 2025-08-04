@@ -25,12 +25,12 @@ npm install --legacy-peer-deps
 ```
 
 ### 4. Configurar la conexión al backend
-El frontend está configurado para conectarse a `http://localhost:3000` (backend Node.js).
+El frontend está configurado para conectarse a `https://prueba-vertice.onrender.com/` (backend Node.js).
 
 Si tu backend está en una URL diferente, edita el archivo:
 `src/services/api.js` y cambia la línea:
 ```javascript
-const API_BASE_URL = 'http://localhost:3000';
+const API_BASE_URL = 'https://prueba-vertice.onrender.com/';
 ```
 
 ### 5. Ejecutar el proyecto

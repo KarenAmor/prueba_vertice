@@ -81,4 +81,4 @@ src/
 - **bcryptjs** - Hashing de contraseñas
 - **class-validator** - Validación de datos
 - **Passport** - Middleware de autenticación
-
+- **Swagger** - Documentación

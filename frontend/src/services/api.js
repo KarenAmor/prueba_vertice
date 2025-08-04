@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_BASE_URL = 'http://localhost:3000';
+const API_BASE_URL = 'https://prueba-vertice.onrender.com/';
 
 // Crear instancia de axios
 const api = axios.create({

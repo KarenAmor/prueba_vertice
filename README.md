@@ -26,6 +26,7 @@ Proyecto Completo/
 - **JWT** - Autenticación con tokens
 - **Passport** - Middleware de autenticación
 - **Bcrypt** - Hashing de contraseñas
+- **Swagger** - Documentación
 
 ### Frontend React
 - **React 18** - Biblioteca de UI
@@ -41,6 +42,7 @@ Proyecto Completo/
 - **Supabase REST API** - Conexión a base de datos
 - **JWT** - Autenticación
 - **CORS** - Habilitado para frontend
+- **Swagger** - Documentación
 
 ### Base de Datos
 - **Supabase** - PostgreSQL en la nube
@@ -189,7 +191,9 @@ go run main.go
 ## 🌐 URLs de Acceso
 
 - **Frontend**: http://localhost:5173
+- **Prod: Frontend**:https://gestion-de-proyectos.netlify.app/login
 - **Backend Node.js**: http://localhost:3000
+- **Prod: Backend Node.js**:https://prueba-vertice.onrender.com
 - **Backend Go**: http://localhost:3002
 - **Supabase Dashboard**: https://supabase.com/dashboard
 

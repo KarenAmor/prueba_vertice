@@ -9,6 +9,7 @@ Backend alternativo desarrollado en Go usando Gin framework y Supabase como base
 - **Supabase** - Base de datos y autenticación
 - **JWT** - Autenticación con tokens
 - **CORS** - Habilitado para frontend
+- **Swagger** - Documentación
 
 ## Estructura del Proyecto
 
