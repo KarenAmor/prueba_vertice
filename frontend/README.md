@@ -94,17 +94,3 @@ frontend/
 ├── package.json            # Dependencias y scripts
 └── README.md              # Documentación
 ```
-
-## Próximos Pasos
-
-1. ✅ Backend Node.js completado
-2. ✅ Frontend React completado
-3. 🔄 Desarrollar backend Go
-4. ⏳ Desplegar en Netlify
-
-## Notas Importantes
-
-- Asegúrate de que el backend Node.js esté ejecutándose en puerto 3000
-- El frontend usa Vite como bundler para desarrollo rápido
-- Todas las rutas están protegidas excepto login y register
-- Los tokens JWT se guardan en localStorage
